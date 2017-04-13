@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
-    private int _currBookPage = 4;
+    private int _currBookPage = 0;
     //private float Hp;
     //private int level = 1; 
 
@@ -37,19 +37,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    //public void SetCurrBookPage(int page)
-    //{
-    //    _currBookPage = page;
-    //}
-
-    //public int GetCurrBookPage()
-    //{
-    //    return _currBookPage;
-    //}
 
     private void Update()
     {
-        Debug.Log("page: " + _currBookPage);
+        //Debug.Log("page: " + _currBookPage);
     }
 
 }
