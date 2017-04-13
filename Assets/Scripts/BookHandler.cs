@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class BookHandler {
 
-    //public static int currentPage = 0;
     private static string lastScene = "MenuTmp"; //change to menu
 
     public void handleBook()
