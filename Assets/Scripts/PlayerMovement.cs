@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -22,12 +24,18 @@ public class PlayerMovement : MonoBehaviour {
         _cameraTransform = Camera.main.transform;
     }
 
+    
     // Update is called once per frame
     void Update()
     {
         Move();
     }
-    
+
+    private void LateUpdate()
+    {
+
+    }
+
     void Animating(float h, float v)
     {
         bool walking = h != 0f || v != 0f;
