@@ -22,6 +22,12 @@ public class PlayerMovement : MonoBehaviour {
         _animator = GetComponent<Animator>();
         //_playerRb = GetComponent<Rigidbody>();
         _cameraTransform = Camera.main.transform;
+
+        //DontDestroyOnLoad(gameObject);
+        //if (FindObjectsOfType(GetType()).Length > 1)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     
