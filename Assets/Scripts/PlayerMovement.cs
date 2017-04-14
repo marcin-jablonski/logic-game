@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour {
 
     public float _speed = 6f;
-    public float _turnSmoothTime = 0.2f;
+    public float _turnSmoothTime = 200.0f;
     private float _turnSmoothVelocity;
     private float _speedSmoothVelocity;
     private float _currentSpeed;
