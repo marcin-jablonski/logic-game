@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class Level1Manager : LevelManager {
@@ -14,13 +15,12 @@ public class Level1Manager : LevelManager {
 
     private List<Collider> _playerOrder = new List<Collider>();
 
+    public Text winText;
 
     public override void LogCollision(object oSender, EventArgs oEventArgs)
     {
         CollisionArgs oCollisionArgs = oEventArgs as CollisionArgs;
         addBlock(oCollisionArgs.ColliderChild);
-        //Debug.Log(oCollisionArgs.ColliderChild.tag);
-        //oCollisionArgs.ColliderChild.gameObject.SetActive(false);
     }
 
     private void addBlock(Collider block)
@@ -31,6 +31,8 @@ public class Level1Manager : LevelManager {
             Debug.Log("adding: " + block.tag);
             _playerOrder.Add(block);
             block.gameObject.SetActive(false);
+            if (_correctOrder.Count == _playerOrder.Count)
+                winText.text = "Zwycięstwo";
         }
         else
         {
@@ -43,7 +45,6 @@ public class Level1Manager : LevelManager {
         }
   
     }
-
 
     // Use this for initialization
     //void Start () {
