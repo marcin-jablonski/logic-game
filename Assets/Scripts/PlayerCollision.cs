@@ -7,14 +7,14 @@ public class PlayerCollision : MonoBehaviour {
 
     //private Rigidbody _playerRb;
     //public GameObject _player;
-    public Level1Manager _level1Manager; //change to LevelManager
+    public LevelManager _levelManager;
 
     public delegate void CollisionDelegate(object oSender, EventArgs oEventArgs);
     public event CollisionDelegate CollisionDetected;
 
-    public void Collision(string player, string collider)
+    public void Collision(Collider parent, Collider child)
     {
-        CollisionArgs oCollisionArgs = new CollisionArgs(player, collider);
+        CollisionArgs oCollisionArgs = new CollisionArgs(parent, child);
         FireCollisionEvent(oCollisionArgs);
     }
 
@@ -27,22 +27,13 @@ public class PlayerCollision : MonoBehaviour {
     }
 
     void Start () {
-        //this.CollisionDetected += _level1Manager.LogCollision;
+        this.CollisionDetected += _levelManager.LogCollision;
         //_playerRb =  GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Block01"))
-        {
-            Collision("a", "Block01");
-            //Debug.Log("Block01");
-        }
-        if (other.gameObject.CompareTag("Block02"))
-        {
-            Collision("b", "Block02");
-            //Debug.Log("Block02");
-        }
+        Collision(this.GetComponent<Collider>(), other);
     }
 
     void Update () {

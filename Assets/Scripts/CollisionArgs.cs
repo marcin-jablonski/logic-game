@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class CollisionArgs : EventArgs {
 
-    public string Player { get; set; }
-    public string Collider { get; set; }
+    public Collider ColliderParent { get; set; }
+    public Collider ColliderChild { get; set; }
 
-    public CollisionArgs(string player, string collider)
+    public CollisionArgs(Collider colliderParent, Collider colliderChild)
     {
-        Player = player;
-        Collider = collider;
+        ColliderParent = colliderParent;
+        ColliderChild = colliderChild;
     }
 
 }
