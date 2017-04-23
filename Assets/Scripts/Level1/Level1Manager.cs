@@ -51,8 +51,23 @@ public class Level1Manager : LevelManager {
 
     //}
 
-    //// Update is called once per frame
-    //void Update () {
+    //private void Awake()
+    //{
+    //    DontDestroyOnLoad(gameObject);
+    //    if (FindObjectsOfType(GetType()).Length > 1)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    //Debug.Log("trololo");
+    //    foreach (Collider val in _playerOrder)
+    //    {
+    //        val.gameObject.SetActive(false);
+    //        Debug.Log("wtf: "+ val.tag);
+    //    }
     //}
 }
