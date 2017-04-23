@@ -51,23 +51,29 @@ public class Level1Manager : LevelManager {
 
     //}
 
-    //private void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //    if (FindObjectsOfType(GetType()).Length > 1)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    private void Awake()
+    {
+        //DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(transform.root.gameObject);
+        //if (FindObjectsOfType(GetType()).Length > 1)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //foreach (Collider val in _playerOrder)
+        //{
+        //    val.gameObject.SetActive(false);
+        //    Debug.Log("wtf: " + val.tag);
+        //}
+    }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    //Debug.Log("trololo");
-    //    foreach (Collider val in _playerOrder)
-    //    {
-    //        val.gameObject.SetActive(false);
-    //        Debug.Log("wtf: "+ val.tag);
-    //    }
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        //Debug.Log("trololo");
+        //foreach (Collider val in _playerOrder)
+        //{
+        //    val.gameObject.SetActive(false);
+        //    Debug.Log("wtf: " + val.tag);
+        //}
+    }
 }
