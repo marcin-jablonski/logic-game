@@ -13,10 +13,11 @@ public class InputListener : MonoBehaviour {
     
     private void KeysActions()
     {
-        if (Input.GetKeyUp(KeyCode.Return))
-        {
-            handleBookKey();
-        }
+		if (Input.GetKeyUp (KeyCode.Return)) {
+			handleBookKey ();
+		} else if (Input.GetKeyUp (KeyCode.Escape)) {
+			handleEscapeKey();
+		}
     }
 
     private void handleBookKey()
@@ -24,4 +25,9 @@ public class InputListener : MonoBehaviour {
         BookHandler book = new BookHandler();
         book.handleBook();
     }
+
+	private void handleEscapeKey()
+	{
+		SceneManager.LoadScene("MainMenu");
+	}
 }
