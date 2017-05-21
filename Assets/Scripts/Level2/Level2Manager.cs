@@ -18,10 +18,10 @@ public class Level2Manager : LevelManager {
     }
 
 
-    private void rotateStatue(Collider statue)
+    private void rotateStatue(GameObject statue)
     {
         Debug.Log(statue.name);
-        statue.gameObject.GetComponent<StatueRotator>().changeRotation();
+        statue.GetComponent<StatueRotator>().changeRotation();
 
     }
 
@@ -58,13 +58,37 @@ public class Level2Manager : LevelManager {
         if (diff.sqrMagnitude <= 2.0f)
         {
             Debug.Log("close to "+closestStatue.name);
+
+            if (Input.GetKeyUp("space"))
+            {
+                rotateStatue(closestStatue);
+            }
+                
+
         }
 
 
     }
 
 
-  
+    //private void LateUpdate()
+    //{
+    //    KeysActions();
+    //}
+
+    //private void KeysActions()
+    //{
+    //    if (Input.GetKeyUp(KeyCode.Return))
+    //    {
+    //        handleBookKey();
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.Escape))
+    //    {
+    //        handleEscapeKey();
+    //    }
+    //}
+
+
     void Start () {
         _player = GameObject.FindGameObjectWithTag("Player");
     }
