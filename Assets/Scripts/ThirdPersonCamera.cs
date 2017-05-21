@@ -24,7 +24,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
         _yaw += Input.GetAxis("Mouse X") * _mouseSensitivity;
-        _pitch += Input.GetAxis("Mouse Y") * _mouseSensitivity;
+        _pitch += -Input.GetAxis("Mouse Y") * _mouseSensitivity;
         _pitch = Mathf.Clamp(_pitch, _pitchMinMax.x, _pitchMinMax.y);
 
         Vector3 targetRotation = new Vector3(_pitch, _yaw);
