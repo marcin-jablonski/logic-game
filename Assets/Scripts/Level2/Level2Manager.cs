@@ -55,7 +55,7 @@ public class Level2Manager : LevelManager {
         GameObject closestStatue = FindClosestStatue();
         Vector3 diff = closestStatue.transform.position - _player.transform.position;
 
-        if (diff.sqrMagnitude <= 2.0f)
+        if (diff.sqrMagnitude <= 5.5f)
         {
             Debug.Log("close to "+closestStatue.name);
 

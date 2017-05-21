@@ -8,6 +8,12 @@ public class StatueRotator : MonoBehaviour {
 
     //private float _xRotation = 0.0f;
 
+    private void Awake()
+    {
+        _currentRotation = transform.rotation.eulerAngles.y;
+    }
+
+
     public void changeRotation()
     {
         if (System.Math.Round((decimal)transform.rotation.eulerAngles.y, 0) % 90 == 0)
@@ -18,20 +24,16 @@ public class StatueRotator : MonoBehaviour {
 
     }
 
-	void Awake () {
-        //Transform go = GetComponent<Transform>();
-        //_xRotation = go.rotation.x;
-        //Debug.Log("X rotation: " + transform.rotation.x);
-	}
-
 
     private void rotate()
     {
         float speed = 0.5f;
         //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(_xRotation, _currentRotation, transform.rotation.z), Time.deltaTime * speed);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, _currentRotation, transform.rotation.eulerAngles.z), Time.deltaTime * 20f);
-      
-        
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(
+            transform.rotation.eulerAngles.x, 
+            _currentRotation, 
+            transform.rotation.eulerAngles.z),
+            Time.deltaTime * 20f);     
     }
 
     // Update is called once per frame
