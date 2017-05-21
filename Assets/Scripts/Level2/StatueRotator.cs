@@ -5,21 +5,50 @@ using UnityEngine;
 public class StatueRotator : MonoBehaviour {
 
     private float _currentRotation = 0.0f;
-
-    //private float _xRotation = 0.0f;
+    private PositionDirection _currentDirection;
 
     private void Awake()
     {
         _currentRotation = transform.rotation.eulerAngles.y;
+
+        switch (name)
+        {
+            case "BearStatue":
+                _currentDirection = PositionDirection.South;
+                break;
+            case "LionStatue":
+                _currentDirection = PositionDirection.North;
+                break;
+            case "HorseStatue":
+                _currentDirection = PositionDirection.West;
+                break;
+            case "DragonStatue":
+                _currentDirection = PositionDirection.East;
+                break;
+
+            default:
+                Debug.Log("Statue not found");
+                break;
+        }
+
+
+    }
+
+    public PositionDirection getCurrentDirection()
+    {
+        return _currentDirection;
     }
 
 
     public void changeRotation()
     {
+
         if (System.Math.Round((decimal)transform.rotation.eulerAngles.y, 0) % 90 == 0)
         {
             _currentRotation = (_currentRotation + 90.0f) % 360;
             if (_currentRotation < 0) _currentRotation += 360;
+
+            _currentDirection = (PositionDirection)(((int)_currentDirection + 1) % 4);
         }
 
     }
@@ -33,7 +62,9 @@ public class StatueRotator : MonoBehaviour {
             transform.rotation.eulerAngles.x, 
             _currentRotation, 
             transform.rotation.eulerAngles.z),
-            Time.deltaTime * 20f);     
+            Time.deltaTime * 20f);
+        
+       
     }
 
     // Update is called once per frame
