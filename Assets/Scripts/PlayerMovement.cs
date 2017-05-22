@@ -65,6 +65,9 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime, Space.World);
 
+        transform.rotation = Quaternion.Euler(0.0f,transform.rotation.eulerAngles.y, 0.0f);
+
+
         Animating(input.x, input.y);
     }
 }
