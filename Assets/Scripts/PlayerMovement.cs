@@ -65,7 +65,10 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime, Space.World);
 
+
         transform.rotation = Quaternion.Euler(0.0f,transform.rotation.eulerAngles.y, 0.0f);
+        //tmp! powinno byc 0.0f ale wtedy wpada jakims cudem pod podloge dokladnie o -0.7066708 dlatego tak
+        //transform.position = new Vector3(transform.position.x, 0.7066708f, transform.position.z);
 
 
         Animating(input.x, input.y);
