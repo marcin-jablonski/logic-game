@@ -8,21 +8,21 @@ public class Level2Manager : LevelManager {
 
     public Text winText;
 
+    private Dictionary<String, PositionDirection> _currentPositions;
     private GameObject _player = null;
 
     public override void LogCollision(object oSender, EventArgs oEventArgs)
     {
-        CollisionArgs oCollisionArgs = oEventArgs as CollisionArgs;
-        //rotateStatue(oCollisionArgs.ColliderChild);
-        //detectStatue(oCollisionArgs.ColliderParent,oCollisionArgs.ColliderChild);
+        //not necessary
     }
 
 
     private void rotateStatue(GameObject statue)
     {
         Debug.Log(statue.name);
-        statue.GetComponent<StatueRotator>().changeRotation();
-
+        StatueRotator rotator = statue.GetComponent<StatueRotator>();
+        rotator.changeRotation();
+        _currentPositions[rotator.name] = rotator.getCurrentDirection();
     }
 
 
@@ -70,33 +70,32 @@ public class Level2Manager : LevelManager {
 
     }
 
-
-    //private void LateUpdate()
-    //{
-    //    KeysActions();
-    //}
-
-    //private void KeysActions()
-    //{
-    //    if (Input.GetKeyUp(KeyCode.Return))
-    //    {
-    //        handleBookKey();
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.Escape))
-    //    {
-    //        handleEscapeKey();
-    //    }
-    //}
+    private void checkPositions()
+    {
+        if (_currentPositions["BearStatue"]==PositionDirection.North &&
+            _currentPositions["LionStatue"] == PositionDirection.North &&
+            _currentPositions["HorseStatue"] == PositionDirection.South &&
+            _currentPositions["DragonStatue"] == PositionDirection.South)
+        {
+            winText.text = "Zwycięstwo";
+        }
+    }
 
 
     void Start () {
         _player = GameObject.FindGameObjectWithTag("Player");
+        _currentPositions = new Dictionary<String, PositionDirection>();
+        //tmp -> move to const (StatueRotator uses the same data)
+        _currentPositions.Add("BearStatue", PositionDirection.South);
+        _currentPositions.Add("LionStatue", PositionDirection.North);
+        _currentPositions.Add("HorseStatue", PositionDirection.West);
+        _currentPositions.Add("DragonStatue", PositionDirection.East);
     }
 
     // Update is called once per frame
-    void Update()
-        {
-            detectStatue();
-        }
+    void Update(){
+        detectStatue();
+        checkPositions();
+    }
 
 }
