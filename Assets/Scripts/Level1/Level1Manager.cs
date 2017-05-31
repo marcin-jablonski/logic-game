@@ -31,25 +31,19 @@ public class Level1Manager : LevelManager {
 
     private void addBlock(Collider block)
     {
-        //Debug.Log("jo: "+block.tag[block.tag.Length-1]);
 
-        if (block.tag == _correctOrder.ElementAt(curr) && _playerOrder.Count == curr)
+        if(block.tag[block.tag.Length - 1] == _correctOrder.ElementAt(curr)[_correctOrder.ElementAt(curr).Length - 1])
         {
-            currBlock = _correctOrder.ElementAt(curr);
-            nextBlock = _correctOrder.ElementAt(++curr);
-            //curr++;
-            Debug.Log("current: " + currBlock);
-            Debug.Log("next: " + nextBlock);
-
+            curr++;
             block.gameObject.SetActive(false);
             _playerOrder.Add(block);
 
-        }
-        else if (curr>0 && block.tag[block.tag.Length - 1] == nextBlock[nextBlock.Length - 1])
-        {
-            Debug.Log("hiii");
-            block.gameObject.SetActive(false);
-            _playerOrder.Add(block);
+            if(curr == _correctOrder.Count)
+            {
+                winText.text = "Zwycięstwo";
+                SceneManager.LoadScene("Level2");
+            }
+
         }
         else
         {
@@ -59,9 +53,38 @@ public class Level1Manager : LevelManager {
             }
             _playerOrder.Clear();
             curr = 0;
-            currBlock = "";
-            nextBlock = "";
         }
+
+
+        //if (block.tag == _correctOrder.ElementAt(curr) && _playerOrder.Count == curr)
+        //{
+        //    currBlock = _correctOrder.ElementAt(curr);
+        //    nextBlock = _correctOrder.ElementAt(++curr);
+        //    //curr++;
+        //    Debug.Log("current: " + currBlock);
+        //    Debug.Log("next: " + nextBlock);
+
+        //    block.gameObject.SetActive(false);
+        //    _playerOrder.Add(block);
+
+        //}
+        //else if (curr>0 && block.tag[block.tag.Length - 1] == nextBlock[nextBlock.Length - 1])
+        //{
+        //    Debug.Log("hiii");
+        //    block.gameObject.SetActive(false);
+        //    _playerOrder.Add(block);
+        //}
+        //else
+        //{
+        //    foreach (Collider val in _playerOrder)
+        //    {
+        //        val.gameObject.SetActive(true);
+        //    }
+        //    _playerOrder.Clear();
+        //    curr = 0;
+        //    currBlock = "";
+        //    nextBlock = "";
+        //}
 
 
         //if (block.tag == _correctOrder.ElementAt(_playerOrder.Count)
