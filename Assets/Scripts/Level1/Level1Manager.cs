@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class Level1Manager : LevelManager {
 
@@ -32,7 +33,11 @@ public class Level1Manager : LevelManager {
             _playerOrder.Add(block);
             block.gameObject.SetActive(false);
             if (_correctOrder.Count == _playerOrder.Count)
+            {
                 winText.text = "Zwycięstwo";
+                SceneManager.LoadScene("Level2");
+            }
+                
         }
         else
         {
