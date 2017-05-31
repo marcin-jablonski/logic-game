@@ -22,12 +22,20 @@ public class InputListener : MonoBehaviour {
 
     private void handleBookKey()
     {
-        BookHandler book = new BookHandler();
-        book.handleBook();
+        GameObject book = GameObject.FindGameObjectWithTag("Book");
+        Canvas bookCanvas = book.GetComponent<Canvas>();
+        if (bookCanvas.enabled)
+        {
+            bookCanvas.enabled = false;
+        }
+        else
+        {
+            bookCanvas.enabled = true;
+        }
     }
 
 	private void handleEscapeKey()
 	{
-		SceneManager.LoadScene("MainMenu");
+		//SceneManager.LoadScene("MainMenu");
 	}
 }

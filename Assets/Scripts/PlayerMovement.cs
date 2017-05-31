@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour {
         float targetSpeed = _speed * inputDir.magnitude;
         _currentSpeed = Mathf.SmoothDamp(_currentSpeed, targetSpeed, ref _speedSmoothVelocity, _speedSmoothTime);
 
-        transform.Translate(transform.forward * _currentSpeed * Time.deltaTime, Space.World);
+        transform.Translate(transform.forward * (_currentSpeed) * Time.deltaTime, Space.World);
 
 
         transform.rotation = Quaternion.Euler(0.0f,transform.rotation.eulerAngles.y, 0.0f);

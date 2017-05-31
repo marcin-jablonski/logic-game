@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour {
         else if (instance != this)
             Destroy(gameObject);
 
-        //DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(transform.root.gameObject);
+        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(transform.root.gameObject);
         InitGame();
     }
 
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
     private void Update()
     {
         //Debug.Log("page: " + _currBookPage);
+        //Debug.Log("test: " + x++);
     }
 
 }
