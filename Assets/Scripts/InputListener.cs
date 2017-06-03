@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class InputListener : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class InputListener : MonoBehaviour {
     
     private void KeysActions()
     {
-		if (Input.GetKeyUp (KeyCode.Return)) {
+		if (Input.GetKeyUp (KeyCode.Return) || CrossPlatformInputManager.GetButtonUp("Book")) {
 			handleBookKey ();
 		} else if (Input.GetKeyUp (KeyCode.Escape)) {
 			handleEscapeKey();
