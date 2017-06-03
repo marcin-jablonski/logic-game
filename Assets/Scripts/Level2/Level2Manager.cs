@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Level2Manager : LevelManager {
 
@@ -59,7 +60,7 @@ public class Level2Manager : LevelManager {
         {
             Debug.Log("close to "+closestStatue.name);
 
-            if (Input.GetKeyUp("space"))
+			if (Input.GetKeyUp("space") || CrossPlatformInputManager.GetButtonUp("Rotate"))
             {
                 rotateStatue(closestStatue);
             }
