@@ -37,6 +37,6 @@ public class InputListener : MonoBehaviour {
 
 	private void handleEscapeKey()
 	{
-		//SceneManager.LoadScene("MainMenu");
+		//TODO
 	}
 }
