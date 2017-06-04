@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -79,6 +80,7 @@ public class Level2Manager : LevelManager {
             _currentPositions["DragonStatue"] == PositionDirection.South)
         {
             winText.text = "Zwycięstwo";
+			SceneManager.LoadScene ("Level3");
         }
     }
 
